@@ -1,55 +1,53 @@
-# Koda Webserver
+# 🚀 Koda Webserver
 
-Koda Webserver is a high-performance, lightweight web server built from the ground up using Node.js raw networking (net and tls). It is designed for scalability, featuring custom caching and granular security controls.
-
-## Configuration Guide (koda.yaml)
-
-You can define multiple hosts in your koda.yaml file. Here is a breakdown of the available settings for each host:
-
-- host: The domain name to listen for (use * for wildcard/all).
-- ip / port: The local IP address and port the server binds to.
-- root_dir: The directory where your website files are stored.
-
-### Caching & Performance
-
-- cache_settings: Configures the in-memory LRUCache.
-    - max_objects: Maximum number of files stored in RAM.
-    - min_file_size / max_file_size: Limits for caching based on file size (in bytes).
-    - ttl_seconds: How long a file stays in cache before expiring.
-
-- hypercache: Enables high-frequency request tracking.
-    - update_interval_ms: Frequency at which cache stats are evaluated.
-    - min_requests_per_interval: Threshold of hits required to trigger an automatic cache refresh.
-    - detection_window_ms: The time frame for tracking request bursts.
-
-### Security
-
-- security: Manages HTTP security headers.
-    - xss_headers & security_headers: Policy level (e.g., low, medium, high).
-    - allow_iframes: When true, prevents X-Frame-Options from blocking your site in iframes.
-
-- ssl: Configure HTTPS settings.
-    - enabled: Toggle for TLS/SSL.
-    - cert / key: Paths to your certificate and private key files.
-
-### Connection Management
-
-- timeouts: Prevents resource exhaustion by closing stale connections.
-    - connection: Max time to hold an initial connection open.
-    - request_read: Max time allowed to receive the HTTP request body.
-    - keep_alive: Timeout for idle connections.
+Koda Webserver is a high-performance, minimalist engine built from the ground up using Node.js raw networking (`net` and `tls`). Engineered for maximum throughput and minimal overhead, Koda brings enterprise-grade caching and security to your infrastructure.
 
 ---
 
-## Customization
+## ⚙️ Configuration Guide (`koda.yaml`)
 
-### Adding, Modifying, or Removing Hosts
-Simply edit the koda.yaml file. You can add as many host entries as needed.
+Define your infrastructure in `koda.yaml`. Note: **`@index`** represents the current working directory of the application.
 
-### Modifying MIME types
-Update the mappings for file extensions to Content-Types at:
-/json/mime.json
+| Setting | Description |
+| :--- | :--- |
+| **host** | The domain name to listen for (use `*` for wildcard). |
+| **ip / port** | The local IP address and port the server binds to. |
+| **root_dir** | The directory where your website files are stored (e.g., `@index/content/`). |
 
-### Modifying Security Policies
-Define the headers sent with each request at:
-/json/security_policies.json
+### ⚡ Caching & Performance
+* **cache_settings**: Configures the in-memory `LRUCache`.
+    * `max_objects`: Maximum files held in RAM.
+    * `min_file_size` / `max_file_size`: Cache boundaries (in bytes).
+    * `ttl_seconds`: Time-to-live for cached objects.
+* **hypercache**: Intelligent request tracking to prevent I/O bottlenecks.
+    * `update_interval_ms`: Evaluation frequency.
+    * `min_requests_per_interval`: Threshold to trigger an auto-refresh.
+    * `detection_window_ms`: Time frame for tracking high-traffic bursts.
+
+### 🛡️ Security
+* **security**: Granular control over HTTP security headers.
+    * `xss_headers` & `security_headers`: Choose your policy level (`low`, `medium`, `high`).
+    * `allow_iframes`: Toggle for `X-Frame-Options`.
+* **ssl**: HTTPS configuration.
+    * `enabled`: Toggle for TLS support.
+    * `cert` / `key`: Paths to your credentials (e.g., `@index/certs/cert.pem`).
+
+### ⏱️ Connection Management
+* **timeouts**: Protect against resource exhaustion and slow-loris attacks.
+    * `connection`: Max time for initial connection.
+    * `request_read`: Max time for receiving request body.
+    * `keep_alive`: Timeout for idle persistent connections.
+
+---
+
+## 🛠️ Customization
+
+* **Host Management**: Add or remove hosts directly in `koda.yaml`.
+* **MIME Types**: Customize file mappings at `/json/mime.json`.
+* **Security Policies**: Update headers at `/json/security_policies.json`.
+
+---
+
+## 🐛 Issues & Support
+
+Found a bug or have a feature request? Please help us improve by opening a report in the **[GitHub Issues](https://github.com/KodaDNS/Koda-Webserver/issues)** tracker.
