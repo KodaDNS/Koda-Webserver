@@ -1,0 +1,36 @@
+{
+  "name": "koda-webserver",
+  "version": "1.0.0",
+  "description": "Koda WebServer made with performance and scalability.",
+  "keywords": [
+    "koda",
+    "webserver",
+    "high-performance",
+    "latency"
+  ],
+  "homepage": "https://github.com/KodaDNS/Koda-Webserver#readme",
+  "bugs": {
+    "url": "https://github.com/KodaDNS/Koda-Webserver/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KodaDNS/Koda-Webserver.git"
+  },
+  "license": "Apache-2.0",
+  "author": "KodaDNS",
+  "type": "module",
+  "main": "./launcher/boot.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "d-test"
+  },
+  "dependencies": {
+    "cluster": "^0.7.7",
+    "express": "^5.2.1",
+    "js-yaml": "^4.1.1",
+    "lru-cache": "^11.5.1",
+    "os": "^0.1.2"
+  }
+}

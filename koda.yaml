@@ -1,0 +1,27 @@
+hosts:
+- host: "*"
+  ip: "127.0.0.1"
+  port: 80
+  root_dir: "@index/content/"
+  cache_settings:
+    max_objects: 100
+    min_file_size: 2048
+    max_file_size: 5242880
+    ttl_seconds: 3600
+  hypercache:
+    enabled: true
+    update_interval_ms: 4000
+    min_requests_per_interval: 35
+    detection_window_ms: 1000
+  security:
+    xss_headers: "medium"
+    security_headers: "medium"
+    allow_iframes: true
+  ssl:
+    enabled: false
+    cert: "@index/certs/cert.pem"
+    key: "@index/certs/key.pem"
+  timeouts:
+    connection: 5000
+    request_read: 2000
+    keep_alive: 5000
