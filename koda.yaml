@@ -3,25 +3,51 @@ hosts:
   ip: "127.0.0.1"
   port: 80
   root_dir: "@index/content/"
+
+  # Proxy host
+  proxy_host:
+    enabled: false
+    dest_host: "google.com"
+    dest_port: 80
+    websockets: true
+    cache: true
+    hypercache: true
+
+  # Caching and Performance
   cache_settings:
     max_objects: 100
     min_file_size: 2048
     max_file_size: 5242880
     ttl_seconds: 3600
+
+  # Automated-Cache under high load
   hypercache:
     enabled: true
     update_interval_ms: 4000
     min_requests_per_interval: 35
-    detection_window_ms: 1000
+    detection_frame_ms: 1000
+
+  # Security Policies
   security:
     xss_headers: "medium"
     security_headers: "medium"
     allow_iframes: true
+
+  # TLS/SSL Configuration
   ssl:
     enabled: false
     cert: "@index/certs/cert.pem"
     key: "@index/certs/key.pem"
+
+  # Connection Timeouts (in ms)
   timeouts:
     connection: 5000
     request_read: 2000
     keep_alive: 5000
+
+  # DDoS/Flood Mitigation
+  ddos:
+    max_connection_requests_frame: 60
+    max_connection_requests_frame_ms: 1000
+    max_packet_size: 262144
+    max_packet_size_frame_ms: 1000
