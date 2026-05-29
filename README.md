@@ -88,4 +88,5 @@ Define your infrastructure in `koda.yaml`. Note: **`@index`** represents the cur
 ---
 ## 🐛 Issues & Support
 
-Found a bug or have a feature request? Please help us improve by opening a report in the **[GitHub Issues](https://github.com/KodaDNS/Koda-Webserver/issues)** tracker.
+* Found a bug or have a feature request? Please help us improve by opening a report in the **[GitHub Issues](https://github.com/KodaDNS/Koda-Webserver/issues)** tracker.
+* Need custom help or solutions? contact kodadns@proton.me
